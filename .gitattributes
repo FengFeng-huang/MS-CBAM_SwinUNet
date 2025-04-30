@@ -1,0 +1,12 @@
+# 不把空目录占位文件打进发行包 / GitHub ZIP
+datasets/CVC-ClinicDB/.gitignore       export-ignore
+datasets/Kvasir-SEG/.gitignore         export-ignore
+datasets/Synapse/.gitignore            export-ignore
+figures/.gitignore                     export-ignore
+output/SwinUnet_CBAM_Synapse/.gitignore              export-ignore
+output/SwinUnet_CVC/.gitignore                       export-ignore
+output/SwinUnet_Kvasir/.gitignore                    export-ignore
+output/SwinUnet_MCBAM_CVC/.gitignore                 export-ignore
+output/SwinUnet_MCBAM_Kvasir/.gitignore              export-ignore
+output/SwinUnet_MCBAM_Synapse/.gitignore             export-ignore
+output/SwinUnet_Synapse/.gitignore                   export-ignore
