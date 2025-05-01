@@ -260,7 +260,7 @@ def split_png_dataset(png_folder, out_root, seed=2025):
 
     return {'val': val_names, 'test': test_names}
 
-def main():
+if __name__ == "__main__":
     # training dataset allocated
     training_splits = process_slices(src_dir="./Synapse/train_npz", slices_dir="./Synapse/slices_2d", out_root="./Synapse",
                             seed=2025, is_h5=False)
@@ -276,6 +276,3 @@ def main():
     print(f"Val 集合:  {len(testing_splits['val'])} 张")
     print(f"Test 集合: {len(testing_splits['test'])} 张")
     print("Synapse dataset splitting is done!")
-
-if __name__ == "__main__":
-    main()

@@ -67,12 +67,11 @@ def split_dataset(
 
     return {'train': train_files, 'val': val_files, 'test': test_files}
 
-def main():
+if __name__ == "__main__":
     # splitting with the 70 : 15: 15
     # splitting CVC-ClinicDB
-    splits = split_dataset(image_dir="./CVC-ClinicDB/Original",mask_dir="./CVC-ClinicDB/Ground Truth",dest_root = './CVC-ClinicDB',seed=2025)
+    splits = split_dataset(image_dir="./CVC-ClinicDB/Original", mask_dir="./CVC-ClinicDB/Ground Truth",
+                           dest_root='./CVC-ClinicDB', seed=2025)
     # splitting Kvasir-SEG
-    splits = split_dataset(image_dir="./Kvasir-SEG/images",mask_dir="./Kvasir-SEG/masks",dest_root = './Kvasir-SEG/',seed=2025)
-
-if __name__ == "__main__":
-    main()
+    splits = split_dataset(image_dir="./Kvasir-SEG/images", mask_dir="./Kvasir-SEG/masks",
+                           dest_root='./Kvasir-SEG/', seed=2025)
