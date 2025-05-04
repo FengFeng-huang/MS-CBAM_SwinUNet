@@ -2,7 +2,7 @@
 ![GitHub stars](https://img.shields.io/github/stars/yourname/yourrepo?style=social)
 ![License](https://img.shields.io/github/license/yourname/yourrepo)
 
-# 🩺 MultiScale-Convolutional Block Attention Module SwinUNet
+# MultiScale-Convolutional Block Attention Module SwinUNet
 > *“This is my Final Year Project in XJTLU undergraduate.”*  
 
 ---
@@ -28,34 +28,53 @@ torchvision == 0.19.1
 ### 2. Download pre-trained swin transformer model (Swin-T)
 Download the pre-trained model from the link below:
 
-[📥 Download Swin-T Pre-trained Model] (https://1drv.ms/u/c/0e644bbccb1ebf6b/EXLv071dCmRKltuSPuMPgasBc11oauVDbNv7YLpT8EcBbA?e=cCGBYc)
+[📥 Download Swin-T Pre-trained Model](https://1drv.ms/u/c/0e644bbccb1ebf6b/EXLv071dCmRKltuSPuMPgasBc11oauVDbNv7YLpT8EcBbA?e=cCGBYc)
 
 Put pretrained Swin-T file 'swin_tiny_patch4_window7_224.pth' into folder 'configs/'
 
 ### 3. Download datasets
-[Get Synapse, Kvasir-SEG, and CVC-ClinicDB datasets in this link]: 
+- [📥 Synapse Dataset](https://1drv.ms/u/c/0e644bbccb1ebf6b/EZhh3kY1WBNPo31PekMW-EAB2yTDtdJypReGMlbm7pVHBA?e=xfGPri)
+- [📥 Kvasir-SEG Dataset](https://1drv.ms/u/c/0e644bbccb1ebf6b/EWU0IBcfOeNPlHta9yUIo2AB9wGTeD4GyEyfT-zICsiUSw?e=XK1tXo)
+- [📥 CVC-ClinicDB Dataset](https://1drv.ms/u/c/0e644bbccb1ebf6b/EZ5io_b_efBFjyNQ--SrRLwB-OA3fLyWb8HChgYHwm1MNw?e=5t2gwk)
 
-- Link for Synapse (https://1drv.ms/u/c/0e644bbccb1ebf6b/EZhh3kY1WBNPo31PekMW-EAB2yTDtdJypReGMlbm7pVHBA?e=xfGPri)
-- Link for Kvasir-SEG (https://1drv.ms/u/c/0e644bbccb1ebf6b/EWU0IBcfOeNPlHta9yUIo2AB9wGTeD4GyEyfT-zICsiUSw?e=XK1tXo)
-- Link for CVC-ClinicDB (https://1drv.ms/u/c/0e644bbccb1ebf6b/EZ5io_b_efBFjyNQ--SrRLwB-OA3fLyWb8HChgYHwm1MNw?e=5t2gwk)
+After downloading, unzip each dataset into the following folders:
+- 'datasets/Synapse'
+- 'datasets/Kvasir-SEG'
+- 'datasets/CVC-ClinicDB'
 
-Unzip the datasets files into three folders, respectively.
-- "datasets/Synapse"
-- "datasets/Kvasir-SEG"
-- "datasets/CVC-ClinicDB"  
-
-Then run two .py scripts in the folder "datasets/" to split the data .
+Then, run the two Python scripts located in the `datasets/` folder to split the data appropriately.
 
 ### 4. Configuration setting
-In folder "./configs", .yaml documents save the configuration setting of each model for the specific dataset.
+All configuration files are stored in the `./configs` folder.  
+Each `.yaml` file contains the specific settings for a given model and dataset combination.
 
-### 5. Train/Test
-- Run the "./code/train.py" to run the model in the specified dataset.
-- Remember in train.py, you need to specific which model (SwinUNet, CBAM SwinUNet, my proposed MS-CBAM SwinUNet) you want to run, 
-and do not forget to set the address of configuration file .yaml, the dataset name.
-- In terms of testing, set the configuration file, dataset name, the .pth file as well
+### 5. Train / Test
+#### 🏋️‍♂️ Training
+
+To train a model, run the following script:
+
+```bash
+python code/train.py
+```
+Make sure to specify:
+- The model you want to use:
+  - SwinUNet, 
+  - CBAM_SwinUNet
+  - my proposed MS-CBAM SwinUNet
+- The path to the corresponding .yaml configuration file
+- The dataset name
+
+#### 🧪 Testing
+To test a model, run the following script:
+```bash
+python code/test.py
+```
+To evaluate a trained model, configure the following:
+- The path to the same `.yaml` config file used for training
+- The dataset name
+- The path to the saved `.pth` checkpoint file
 
 ### 6. Introduction of utils files 
-They are both for the images visualization
-- utilis1.py is used to look at the original image and check weather the image data can be data loaded properly.
-- utilis1.py is used to look at the prediction on the test images.
+These Python scripts are used for image visualization:
+- `utilis1.py`: Visualizes the original images to check whether the image data can be loaded correctly.
+- `utilis2.py`: Visualizes the model's predictions on test images.
