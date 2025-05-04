@@ -171,14 +171,14 @@ def mosaic_sample(sample_idx, samples, save_path=None):
 if __name__ == '__main__':
     # color map：label -> RGB
     color_mapping = {
-        1: (255, 255, 255),  # 白色
-        2: (255, 182, 193),  # 浅粉红
-        3: (0, 0, 255),      # 红色
-        4: (0, 255, 0),      # 绿色
-        5: (255, 0, 0),      # 蓝色
-        6: (0, 255, 255),    # 黄色
-        7: (255, 0, 255),    # 紫色
-        8: (255, 255, 0)     # 青色
+        1: (255, 255, 255),  # 白色  spleen
+        2: (255, 182, 193),  # 浅粉红 right kidney
+        3: (0, 0, 255),      # 红色  left kidney
+        4: (0, 255, 0),      # 绿色  gallbladder
+        5: (255, 0, 0),      # 蓝色  liver
+        6: (0, 255, 255),    # 黄色  stomach
+        7: (255, 0, 255),    # 紫色  aorta
+        8: (255, 255, 0)     # 青色  pancreas
     }
     # configuration loading
     '''
@@ -190,6 +190,10 @@ if __name__ == '__main__':
     swinunet_kvasir.yaml
     swinunet_cvc.yaml
     '''
+    idx_num=71
     cfg = load_cfg(path="../configs/swinunet_mcbam_synapse.yaml")
     metrics, samples = evaluate_segmentation(cfg, 'Synapse', 'test', '../output/SwinUnet_MCBAM_Synapse/best_model.pth')
-    mosaic_sample(250, samples, save_path='../figures/sample5_overlay.png')
+    mosaic_sample(idx_num, samples, save_path='../figures/sample5_overlay.png')
+    cfg = load_cfg(path="../configs/swinunet_synapse.yaml")
+    metrics, samples = evaluate_segmentation(cfg, 'Synapse', 'test', '../output/SwinUnet_Synapse/best_model.pth')
+    mosaic_sample(idx_num, samples, save_path='../figures/sample5_overlay.png')
